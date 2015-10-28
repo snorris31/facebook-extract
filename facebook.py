@@ -7,14 +7,13 @@ class facebook:
 	
 	def createPostObject(url):
 		r = requests.get(url)
-		cnx = mysql.connector.connect(user = ****, password = *****, database = 'facebookextract')
+		cnx = mysql.connector.connect(user = Sara, password = middle96, database = 'facebookextract')
         cursor = cnx.cursor()
 		for posts in r:
 			add_data = ("INSERT INTO facebookextract "
-        		"(posts[0], posts[1], posts[2])")
-
+        		"(posts[0], posts[1], posts[2])"
+        		"VALUES (%s, %s, %s, %s)")
     		cursor.execute(add_data)
     		cnx.commit()
-    	cnx.close()
-
+		cnx.close()
 
